@@ -17,15 +17,15 @@ U = require("utils")
 -- Tables                            --
 strings = {}
 strings["turtle_name"] =
-"Name this turtle:\nλ: "
+"Name this turtle:\n>> "
 strings["modem_direction"] =
-"Locate the modem:\nλ: "
+"Locate the modem:\n>> "
 strings["report_frequency"] =
-"Turtle report frequency:\nλ: "
+"Turtle report frequency:\n>> "
 strings["current_y"] =
-"Current turtle Y value:\nλ: "
+"Current turtle Y value:\n>> "
 strings["chosen_protocol"] =
-"Communications protocol:\nλ: "
+"Communications protocol:\n>> "
 items = {
   "minecraft:coal_ore",
   "minecraft:iron_ore",
@@ -67,7 +67,7 @@ initialise = function ()
   for i = 1, 11 do
     print("")
   end
-  print("TurtleUI λ: initialisation.")
+  print("TurtleUI >> initialisation.")
   print("")
   write(strings.turtle_name)
   c["turtle_name"] = read()
