@@ -1,6 +1,6 @@
 -- Constants                         --
 -- Valid Modem Directions
-modem_directions =
+modem_directions = {
  "up", "down",
  "left", "right",
  "bottom", "top"
