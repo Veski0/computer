@@ -1,3 +1,6 @@
+-- https://tinyurl.com/y6bxo9vj
+
+
 local args = { ... }
 os.loadAPI("json")
 
@@ -37,34 +40,34 @@ function getRepo(url)
     local files = { }
     for i,j in pairs(res) do
         local data = { }
-        
+
         if j.type == "file" then
             print("downloading "..j.download_url)
             data = http.get(j.download_url).readAll()
         elseif j.type == "dir" then
             data = getRepo(j.url)
         end
-        
+
         local entry = {
             type = j.type,
             name = j.name,
             contents = data
         }
         table.insert(files,entry)
-        
+
     end
     return files
 end
 
 function createFiles(files, target)
-    
+
     if fs.exists(target) and #fs.list(target) > 0 then
         print("Please select an empty target directory.")
         return
     else
         fs.makeDir(target)
     end
-    
+
     for i,j in pairs(files) do
         if j.type == "file" then
             local file = fs.open(target.."/"..j.name,"w")
