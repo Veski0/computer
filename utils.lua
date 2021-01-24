@@ -7,6 +7,8 @@ modem_directions = {
 }
 ---------------------------------------
 
+-- Functions                         --
+
 -- Function: contains
 -- Purpose : array contains item?
 -- Args    : {Table, Element}
