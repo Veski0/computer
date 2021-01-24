@@ -8,9 +8,9 @@ items = {
 }
 
 report = function (s)
-  rednet.open("back")
+  rednet.open("left")
   rednet.send(0, s, 'report')
-  rednet.close("back")
+  rednet.close("left")
 end
 
 function can_fit_item(name)
