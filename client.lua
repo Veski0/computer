@@ -108,7 +108,7 @@ mine_down = function (blocks)
       if space then
         turtle.digDown()
       else
-        report('turtle is full')
+        report(json.encode('turtle is full'))
         print('Waiting to be emptied.')
         read()
       end
