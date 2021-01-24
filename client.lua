@@ -1,11 +1,28 @@
 U = require("utils")
 
+collation = {}
+collation["minecraft:coal_ore"]=0
+collation["minecraft:iron_ore"]=0
+collation["minecraft:gold_ore"]=0
+collation["minecraft:diamond_ore"]=0
 items = {
   "minecraft:coal_ore",
   "minecraft:iron_ore",
   "minecraft:gold_ore",
   "minecraft:diamond_ore"
 }
+
+items_count = U.table_length(items)
+collate = function ()
+  for i = 1, 16 do
+    local j = turtle.getItemDetail(i)
+    if j ~= nil then
+      if U.contains(items, j.name) then
+        collation[j.name] = collation[j.name] + 1
+      end
+    end
+  end
+end
 
 report = function (s)
   rednet.open("left")
@@ -32,30 +49,18 @@ function can_fit_item(name)
   return can_fit
 end
 
-items_count = U.table_length(items)
-collate = function ()
-  local c = {}
-  for i = 0, items_count do
-    c[items[i]] = 0
-  end
-  for i = 1, 16 do
-    local j = turtle.getItemDetail(i)
-    if j ~= nil then
-      if U.contains(items, j.name) then
-        c[j.name] = c[j.name] + 1
-      end
-    end
-  end
-  return c
-end
-
 y = 13
 chunk_miner_pro = function ()
   while y > 6 do
     slab_miner_pro()
+
+    collate()
+    report(collation)
+
+    turnRight(1)
+    mine_forward(15)
     mine_down(1)
     y = y - 1
-    report('turtle mined a slab')
   end
 end
 
