@@ -55,11 +55,11 @@ chunk_miner_pro = function ()
   while y > 6 do
     slab_miner_pro()
 
-    -- collate()
+    collate()
     report(json.encode(collation))
 
     turtle.turnRight()
-    mine_forward(2)
+    mine_forward(3)
     mine_down(1)
     y = y - 1
   end
@@ -69,7 +69,7 @@ slab_miner_pro = function ()
   lines = 3
   turn = true
   while lines > 0 do
-    mine_forward(2)
+    mine_forward(3)
     if turn then
       turn_right()
     else
