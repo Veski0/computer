@@ -10,6 +10,15 @@ items = {
   "minecraft:diamond_ore"
 }
 
+contains = function (tab, val)
+  for index, value in ipairs(tab) do
+    if value == value then
+      return true
+    end
+  end
+  return false
+end
+
 items_count = U.table_length(items)
 collate = function ()
   for i = 1, 16 do
