@@ -19,7 +19,15 @@ contains = function (tab, val)
   return false
 end
 
-items_count = U.table_length(items)
+table_length = function (t)
+  local count = 0
+  for _ in pairs(t) do
+    count = count + 1
+  end
+  return count
+end
+
+items_count = table_length(items)
 collate = function ()
   for i = 1, 16 do
     local j = turtle.getItemDetail(i)
