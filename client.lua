@@ -69,7 +69,7 @@ slab_miner_pro = function ()
     else
       turn_left()
     end
-    turn = !turn
+    turn = not turn
     lines = lines - 1
   end
 end
