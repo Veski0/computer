@@ -24,7 +24,7 @@ collate = function ()
   for i = 1, 16 do
     local j = turtle.getItemDetail(i)
     if j ~= nil then
-      if U.contains(items, j.name) then
+      if contains(items, j.name) then
         collation[j.name] = collation[j.name] + j.count
       end
     end
