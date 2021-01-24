@@ -69,7 +69,7 @@ slab_miner_pro = function ()
   lines = 3
   turn = true
   while lines > 0 do
-    mine_forward(2s)
+    mine_forward(2)
     if turn then
       turn_right()
     else
