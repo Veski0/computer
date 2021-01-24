@@ -1,4 +1,5 @@
 U = require("utils")
+os.loadAPI("json")
 
 collation = {}
 collation["minecraft:coal_ore"]=0
@@ -18,7 +19,7 @@ collate = function ()
     local j = turtle.getItemDetail(i)
     if j ~= nil then
       if U.contains(items, j.name) then
-        collation[j.name] = collation[j.name] + 1
+        collation[j.name] = collation[j.name] + j.count
       end
     end
   end
@@ -55,7 +56,7 @@ chunk_miner_pro = function ()
     slab_miner_pro()
 
     collate()
-    report(collation)
+    report(json.encode(collation))
 
     turnRight(1)
     mine_forward(15)
@@ -88,7 +89,7 @@ mine_forward = function (blocks)
       if space then
         turtle.dig()
       else
-        report('turtle is full')
+        report(json.encode('turtle is full'))
         print('Waiting to be emptied.')
         read()
       end
